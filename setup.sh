@@ -19,16 +19,25 @@ function install {
 
 # Basics
 #install awscli
-install chrome-gnome-shell
-install curl
-install exfat-utils
-install file
-install git
-install htop
-install jq
-install yq
-install nmap
-install openvpn
 install tree
-install vim
+install git
 install wget
+install curl
+
+# json and yaml parser
+install jq
+# install yq
+#install chrome-gnome-shell
+#install exfat-utils
+#install file
+#install htop
+
+install nmap    # networkmonitor
+#install openvpn
+
+# Run all scripts in programs/
+for f in programs/*.sh; do bash "$f" -H; done
+
+# Get all upgrades
+sudo apt upgrade -y
+sudo apt autoremove -y
