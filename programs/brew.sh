@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#sudo apt update
-#sudo apt install build-essential git
+sudo apt update
+sudo apt install build-essential git
 
 export NONINTERACTIVE=1 
 
