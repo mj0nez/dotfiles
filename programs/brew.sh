@@ -10,6 +10,11 @@ eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/insta
 #(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/"$USER"/.bashrc  # should be set via .bashrc
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-brew doctor
-brew install gcc
-brew analytics off
+
+# brew will be available from the next terminal session
+# therefore we need to manually set the path
+brew = /home/linuxbrew/.linuxbrew/bin/brew 
+
+bash brew doctor
+bash brew install gcc
+bash brew analytics off
