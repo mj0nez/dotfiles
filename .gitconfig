@@ -1,0 +1,13 @@
+#!/bin/bash
+[user]
+    name = Marcel Johannesmann
+    email = mj0nez@fn.de
+[alias]
+    # Adapted from https://blog.jez.io/cli-code-review/
+    # List files which have changed since BASE
+    # Set BASE in shell configuration or before the command
+    files = !git diff --name-only $(git merge-base HEAD \"$BASE\")
+
+    # With stat for interactive use
+    stat = !git diff --stat $(git merge-base HEAD \"$BASE\")
+       
