@@ -20,10 +20,13 @@ brew install pyenv
 sudo apt update
 sudo apt install -y build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev curl \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev llvm
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev llvm 
 
+# we currently miss the Tkinter lib:
+# WARNING: The Python tkinter extension was not compiled and GUI subsystem has been detected. Missing the Tk toolkit?
 
-# set default python to isolate system python
+# isntall and set default python to isolate system python
+pyenv install 3.11.5
 pyenv global 3.11.5 
 
 python3 -m pip install --user pipx
