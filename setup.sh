@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Copy dotfiles
-# ./copy.sh
+# link dotfiles
+./symlink.sh
 
 # Update Ubuntu and get standard repository programs
 sudo apt update && sudo apt full-upgrade -y
@@ -23,14 +23,11 @@ install tree
 install git
 install wget
 install curl
+install tar 
+install gzip 
+install build-essential
 
-# json and yaml parser
-install jq
-# install yq
-#install chrome-gnome-shell
-#install exfat-utils
-#install file
-#install htop
+install jq  #json parser
 
 install nmap    # networkmonitor
 #install openvpn
