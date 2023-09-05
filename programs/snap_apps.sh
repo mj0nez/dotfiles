@@ -6,4 +6,4 @@ sudo apt update
 # curl https://dl.pstmn.io/download/latest/linux_64 -O
 
 sudo apt install snapd 
-sudo snap install core postman
+sudo snap install core postman dbeaver-ce
