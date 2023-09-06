@@ -19,9 +19,9 @@ function install {
 
 # Basics
 #install awscli
-install tree
 install git
-install wget
+install tree
+# install wget  # this comes with ubuntu
 install curl
 install tar 
 install gzip 
