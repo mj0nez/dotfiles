@@ -1,8 +1,9 @@
 #!/bin/bash
 
+# brew is not yet on path
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 brew install pre-commit
-
-
 brew install pyenv
 
 # should be set via .bashrc
