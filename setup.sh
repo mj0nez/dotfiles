@@ -35,7 +35,7 @@ git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
 # Run all scripts in programs/
-for f in programs/*.sh; do bash "$f" -H; done
+for f in programs/*.sh; do bash "$f"; done
 
 # link dotfiles
 ./symlink.sh
