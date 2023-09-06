@@ -27,7 +27,7 @@ eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/insta
 
 # brew will be available from the next terminal session
 # therefore we need to manually set the path
-brewbin = /home/linuxbrew/.linuxbrew/bin/brew 
+brewbin = ./home/linuxbrew/.linuxbrew/bin/brew 
 
 bash brewbin doctor
 bash brewbin install gcc
