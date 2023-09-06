@@ -12,11 +12,11 @@ sudo apt install build-essential git
 #     -h, --help       Display this message.
 #     NONINTERACTIVE   Install without prompting for user input
 #     CI               Install in CI mode (e.g. do not prompt for user input)
-if [[ -n "${CI-}"]]
+if [[ -z ${CI+0} ]]
 then
-    echo "running brew installation in CI mode"
-else
     export NONINTERACTIVE=1
+else
+    echo "CI mode was set"
 fi
 
 eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
