@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# link dotfiles
-./symlink.sh
 
 # Update Ubuntu and get standard repository programs
 sudo apt update && sudo apt full-upgrade -y
@@ -34,6 +32,14 @@ install nmap    # networkmonitor
 
 # Run all scripts in programs/
 for f in programs/*.sh; do bash "$f" -H; done
+
+mkdir "/home/$USER/repositories" && cd $_
+
+git clone https://github.com/mj0nez/dotfiles.git
+cd dotfiles
+
+# link dotfiles
+./symlink.sh
 
 # Get all upgrades
 sudo apt upgrade -y
