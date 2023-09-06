@@ -29,6 +29,6 @@ eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/insta
 # therefore we need to manually set the path
 brew = /home/linuxbrew/.linuxbrew/bin/brew 
 
-brew doctor
-brew install gcc
-brew analytics off
+bash brew doctor
+bash brew install gcc
+bash brew analytics off
