@@ -29,13 +29,13 @@ install jq  #json parser
 install nmap    # networkmonitor
 #install openvpn
 
-#mkdir "/home/$USER/repositories" && cd $_
+mkdir "/home/$USER/repositories" && cd $_
 
-#git clone https://github.com/mj0nez/dotfiles.git
+git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
 # Run all scripts in programs/
-for f in programs/*.sh; do bash "$f" ; done
+for f in programs/*.sh; do bash "$f"; done
 
 # link dotfiles
 ./symlink.sh
