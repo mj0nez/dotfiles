@@ -3,7 +3,21 @@
 sudo apt update
 sudo apt install build-essential git
 
-export NONINTERACTIVE=1 
+
+# for some reason we get this error:
+#
+# programs/brew.sh: line 65: warn: command 
+# Homebrew Installer
+# Usage: [NONINTERACTIVE=1] [CI=1] install.sh [options]
+#     -h, --help       Display this message.
+#     NONINTERACTIVE   Install without prompting for user input
+#     CI               Install in CI mode (e.g. do not prompt for user input)
+if [[ -n "${CI-}"]]
+then
+    echo "running brew installation in CI mode"
+else
+    export NONINTERACTIVE=1
+fi
 
 eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
 
