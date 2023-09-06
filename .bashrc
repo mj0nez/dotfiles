@@ -133,7 +133,7 @@ then
   fi
 fi
 
-export PATH="$PATH:/home/marcel/.local/bin"
+export PATH="$PATH:/home/$USER/.local/bin"
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
