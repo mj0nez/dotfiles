@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Update Ubuntu and get standard repository programs
 sudo apt update && sudo apt full-upgrade -y
 
@@ -30,17 +29,17 @@ install jq  #json parser
 install nmap    # networkmonitor
 #install openvpn
 
-# Run all scripts in programs/
-for f in programs/*.sh; do bash "$f" -H; done
-
 mkdir "/home/$USER/repositories" && cd $_
 
 git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
+# Run all scripts in programs/
+for f in programs/*.sh; do bash "$f" -H; done
+
 # link dotfiles
 ./symlink.sh
 
 # Get all upgrades
-sudo apt upgrade -y
-sudo apt autoremove -y
+# Update Ubuntu and get standard repository programs
+sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y
