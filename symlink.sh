@@ -33,6 +33,8 @@ linkDotfile .bashrc
 linkDotfile .bash_profile
 linkDotfile .gitconfig
 linkDotfile .git-completion.bash
+linkDotfile .zshrc
+linkDotfile .p10k.zsh
 #linkDotfile .tmux.conf
 #linkDotfile .goomwwmrc
 #linkDotfile .inputrc
