@@ -19,6 +19,9 @@ now run the following script to download the sup
 ```bash
 $ su - <username>
 Password:
+```
+
+```bash
 sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup.sh | bash
  
 ```
