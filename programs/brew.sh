@@ -28,8 +28,9 @@ eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/insta
 # brew will be available from the next terminal session
 # therefore we need to manually set the path
 
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-bash brew doctor
-bash brew install gcc
-bash brew analytics off
+
+brew doctor
+brew install gcc
+brew analytics off
