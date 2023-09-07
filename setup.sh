@@ -23,6 +23,8 @@ install curl
 install tar 
 install gzip 
 install build-essential
+install gcc
+install make
 
 install jq  #json parser
 
