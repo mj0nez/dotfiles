@@ -1,3 +1,28 @@
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+#if type brew &>/dev/null
+#then
+#  HOMEBREW_PREFIX="$(brew --prefix)"
+#  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+#  then
+#    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+#  else
+#    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+#    do
+#      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+#    done
+#  fi
+#fi
+
+export PATH="$PATH:/home/$USER/.local/bin"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+eval "$(register-python-argcomplete pipx)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -109,3 +134,5 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
