@@ -34,11 +34,11 @@ mkdir "/home/$USER/repositories" && cd $_
 git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
-bash ./programs/zsh.sh
-
-
 # link dotfiles
 ./symlink.sh
+
+# Run all scripts in programs/
+bash ./programs/brew.sh 
 
 # Get all upgrades
 # Update Ubuntu and get standard repository programs
