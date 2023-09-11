@@ -32,11 +32,12 @@ cd $_
 git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
-# link dotfiles
-./symlink.sh
 
 # Run all scripts in programs/
 bash ./programs/zsh.sh 
+
+# link dotfiles and overwrite autoconfig
+./symlink.sh
 
 # Get all upgrades
 # Update Ubuntu and get standard repository programs
