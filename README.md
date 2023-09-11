@@ -50,11 +50,11 @@ dconf dump /org/gnome/terminal/legacy/profiles:/
 
 Dump a profile with
 ```bash
-dconf dump /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ > terminal-profile.dconf
+dconf dump /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ > .terminal-profile.dconf
 ```
 
 To load the profile (this is done by [zsh.sh](/programs/zsh.sh))
 
 ```bash
-dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ < terminal-profile.dconf
+dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ < .terminal-profile.dconf
 ```

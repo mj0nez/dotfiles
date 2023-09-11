@@ -34,4 +34,4 @@ rm -r -d patched-fonts
 rm $font.tar.xz
 
 # load the terminal profile
-dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ < terminal-profile.dconf
+dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ < .terminal-profile.dconf
