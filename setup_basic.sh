@@ -14,22 +14,20 @@ function install {
   fi
 }
 
-# Basics
-#install awscli
-install git
-install tree
-# install wget  # this comes with ubuntu
-install curl
-install tar 
-install gzip 
-install build-essential
 
-install jq  #json parser
+basicDeps=(git git-gui tree curl bat tar gzip build-essential gcc make jq nmap)
 
-install nmap    # networkmonitor
-#install openvpn
+for dep in "${basicDeps[@]}"
+do
+  install $dep
+done
 
-mkdir "/home/$USER/repositories" && cd $_
+# add alias - deb pkg installs als batcat see https://github.com/sharkdp/bat
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+
+mkdir "/home/$USER/repositories"
+cd $_
 
 git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles

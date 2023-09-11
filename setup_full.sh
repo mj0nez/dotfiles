@@ -2,7 +2,7 @@
 
 
 # run basic setup
-sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup.sh | bash
+sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_basic.sh | bash
 
 # dev-tooling
 bash ./programs/brew.sh
