@@ -30,17 +30,6 @@ sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_basi
  
 ```
 or
-Run either one of the two setup scripts 
-* [setup_basic.sh](/setup_basic.sh) - with git, curl, make, zsh
-* [setup_full.sh](/setup_full.sh) - the above basics and also brew, pyenv, pipx, VScode, DBeaver, Postman
-
-with
-```bash
-
-sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_basic.sh | bash
- 
-```
-or
 ```bash
 sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_full.sh | bash
  
