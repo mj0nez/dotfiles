@@ -36,7 +36,7 @@ cd dotfiles
 ./symlink.sh
 
 # Run all scripts in programs/
-bash ./programs/brew.sh 
+bash ./programs/zsh.sh 
 
 # Get all upgrades
 # Update Ubuntu and get standard repository programs
