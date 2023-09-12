@@ -33,5 +33,9 @@ wget -qO- https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.
 rm -r -d patched-fonts
 rm $font.tar.xz
 
-# load the terminal profile
-dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ < .terminal-profile.dconf
+# loading the profile does not work - should be done manually...
+#
+# # load the terminal profile
+# # sudo apt install dbus-x11 # not tested
+# export DISPLAY=:0.0  # avoids dbus-x11 error
+# dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/
