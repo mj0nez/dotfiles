@@ -2,7 +2,7 @@
 
 sudo apt install zsh fonts-powerline
 # set as default shell - takes affect after a new login
-chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/zsh "$USER"
 
 # oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
