@@ -1,14 +1,14 @@
 #!/bin/bash
 
-sudo apt install zsh fonts-powerline
+sudo apt install -y zsh fonts-powerline
 # set as default shell - takes affect after a new login
-chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/zsh "$USER"
 
 # oh-my-zsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattende
 
 # plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions    
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # power10k theme
 # this requires so symlink the zshrc after installation, otherwise the settings will be overriden
