@@ -15,7 +15,7 @@ function install {
 }
 
 
-basicDeps=(git git-gui tree curl bat tar gzip build-essential gcc make jq nmap)
+basicDeps=(git git-gui tree curl bat tar gzip build-essential gcc make jq nmap htop)
 
 for dep in "${basicDeps[@]}"
 do
