@@ -51,3 +51,5 @@ pyenv global 3.11.5
 
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
+
+pipx install tox pip-tools "black[jupyter]"
