@@ -20,3 +20,10 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 echo "currently the docker deamon runs as root, while a docker group was created. consider adding the current user to that group - but this will grant root permissions"
 
+function install {
+  name="${1}"
+  code --install-extension ${name} --force
+}
+
+
+install ms-azuretools.vscode-docker
