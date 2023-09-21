@@ -13,3 +13,6 @@ nvm install --lts
 nvm use node
 
 node -v
+
+# Install commitlint cli and conventional config
+npm install --save-dev @commitlint/{cli,config-conventional}
