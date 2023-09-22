@@ -1,6 +1,6 @@
 # My dotfiles
 
-change region an language settings - apply english USA system-wide to set en_US.utf8
+Change region in language settings - apply english USA system-wide to set en_US.utf8
 
 To make sure the changes apply, logout and re-login.
 
@@ -61,3 +61,12 @@ To load the profile (this is done by [zsh.sh](/programs/zsh.sh))
 ```bash
 dconf load /org/gnome/terminal/legacy/profiles:/:461f8ee8-d5f7-4da5-9de2-58ab7f40cf4a/ < .terminal-profile.dconf
 ```
+
+### Set fonts manually
+
+Change the following setting in VS-Code
+
+```json
+    "terminal.integrated.fontFamily": "Agave Nerd Font"
+```
+And fix the font in your terminal via Preferences > <Current Profile> > Font > Agave Nerd Font
