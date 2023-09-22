@@ -10,7 +10,6 @@
     files = !git diff --name-only $(git merge-base HEAD \"$BASE\")
 
     # With stat for interactive use
-    s = status
     stat = !git diff --stat $(git merge-base HEAD \"$BASE\")
     
     ls = log --oneline
@@ -21,10 +20,11 @@
     # quick and dirty commit
     c = "!git add -A && git commit -m "
     
-    # run pre-commit hooks and commit 
+    # run manual hooks and commit
     cm = "!bash ~/repositories/dotfiles/hooks/parse_args.sh"
-    # a save point which runs the pre-commit hooks
+    # qucik save point without manual hooks 
     s = !git add -A && git commit -m 'chore: commit save point'
+    # quick save point with hooks
     save = !git add -A && git cm -m 'chore: commit save point'
 
     undo = reset HEAD~1 --mixed
