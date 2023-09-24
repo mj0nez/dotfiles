@@ -52,7 +52,7 @@ pyenv global 3.11.5
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 
-packages=(tox pip-tools "black[jupyter]")
+packages=(tox pip-tools "black[jupyter] codespell")
 
 for package in "${packages[@]}"
 do
