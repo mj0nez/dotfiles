@@ -21,6 +21,8 @@ $ groups <username>
 
 make sure to kill the current session and create a new one
 
+## Installation
+
 ```bash
 $ su - <username>
 Password:
