@@ -56,5 +56,5 @@ packages=(tox pip-tools "black[jupyter] codespell")
 
 for package in "${packages[@]}"
 do
-  pipx install package
+  pipx install $package
 done
