@@ -13,6 +13,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+pyenv update
+pyenv doctor  # verify installation and tools are sufficient
+
 # isntall and set default python to isolate system python
 pyenv install 3.11.5
 pyenv global 3.11.5 
