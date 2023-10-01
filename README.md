@@ -1,6 +1,12 @@
 # My dotfiles
 
-Change region in language settings - apply english USA system-wide to set en_US.utf8
+
+## Settings
+
+1. Language & Region
+    * Change region in language settings - apply english USA system-wide to set en_US.utf8
+1.  Add src-repositories to apt sources
+    * navigate to Settings > About > Software Updates > Ubuntu Software > activate "Source code"
 
 To make sure the changes apply, logout and re-login.
 
@@ -23,7 +29,7 @@ Password:
 Run either one of the two setup scripts
 
 * [setup_basic.sh](/setup_basic.sh) - with git, curl, make, zsh
-* [setup_full.sh](/setup_full.sh) - the above basics and also brew, pyenv, pipx, VScode, DBeaver, Postman
+* [setup_full.sh](/setup_full.sh) - the above basics and also pyenv, pipx, VS-Code, DBeaver, Postman
 
 with
 
