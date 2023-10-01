@@ -11,7 +11,7 @@
 
     # With stat for interactive use
     stat = !git diff --stat $(git merge-base HEAD \"$BASE\")
-    
+
     ls = log --oneline
 
     # https://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git
@@ -19,10 +19,10 @@
 
     # quick and dirty commit
     c = "!git add -A && git commit -m "
-    
+
     # run manual hooks and commit
     cm = "!bash ~/repositories/dotfiles/hooks/parse_args.sh"
-    # qucik save point without manual hooks 
+    # qucik save point without manual hooks
     s = !git add -A && git commit -m 'chore: commit save point'
     # quick save point with hooks
     save = !git add -A && git cm -m 'chore: commit save point'

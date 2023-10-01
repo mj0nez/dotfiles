@@ -5,7 +5,7 @@
 sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_basic.sh | bash
 
 # dev-tooling
-bash ./programs/brew.sh
+bash ./programs/py-dev.sh
 bash ./programs/snap_apps.sh
 bash ./programs/node.sh
 

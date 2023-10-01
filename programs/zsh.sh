@@ -27,7 +27,7 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/download/$version/$fon
 tar -xf $font.tar.xz -C patched-fonts/$font/
 
 # load and run installation
-wget -qO- https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh | bash  
+wget -qO- https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh | bash
 
 # clean up
 rm -r -d patched-fonts

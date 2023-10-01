@@ -30,14 +30,14 @@ with
 ```bash
 
 sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_basic.sh | bash
- 
+
 ```
 
 or
 
 ```bash
 sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_full.sh | bash
- 
+
 ```
 
 Lastly, set the loaded terminal profile as default by opening a terminal  > Preferences > "zsh-terminal-profile"

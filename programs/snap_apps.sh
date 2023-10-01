@@ -2,7 +2,7 @@
 
 sudo apt update
 
-sudo apt install snapd 
+sudo apt install snapd
 sudo snap install core postman dbeaver-ce
 sudo snap install code --classic
 

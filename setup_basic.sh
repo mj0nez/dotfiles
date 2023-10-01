@@ -34,7 +34,7 @@ cd dotfiles
 
 
 # Run zsh install
-bash ./programs/zsh.sh 
+bash ./programs/zsh.sh
 
 # link dotfiles and overwrite autoconfig
 ./symlink.sh
