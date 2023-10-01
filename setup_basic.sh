@@ -33,7 +33,7 @@ git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
 
-# Run all scripts in programs/
+# Run zsh install
 bash ./programs/zsh.sh 
 
 # link dotfiles and overwrite autoconfig
