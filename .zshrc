@@ -83,7 +83,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions nvm tmux)
+plugins=(git zsh-autosuggestions ssh-agent nvm tmux)
 
 # lazyloading for nvm see https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm
 zstyle ':omz:plugins:nvm' lazy yes
@@ -127,3 +127,5 @@ export NVM_DIR="$HOME/.nvm"
 
 
 alias repos="cd ~/repositories"
+
+source ~/.env
