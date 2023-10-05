@@ -1,8 +1,17 @@
 #!/bin/bash
 
+[init]
+  defaultBranch = main
+
 [user]
     name = Marcel Johannesmann
     email = mj0nez@fn.de
+
+# see https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig/43654115#43654115
+# and https://git-scm.com/docs/git-config#_conditional_includes
+[includeIf "gitdir:~/repositories/work/"]
+    path = ~/repositories/work/.gitconfig
+
 [alias]
     # Adapted from https://blog.jez.io/cli-code-review/
     # List files which have changed since BASE

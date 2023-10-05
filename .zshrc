@@ -127,5 +127,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 alias repos="cd ~/repositories"
+alias dotfiles="cd ~/repositories/dotfiles"
+alias work="cd ~/repositories/work"
 
 source ~/.env
