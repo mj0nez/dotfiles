@@ -1,3 +1,8 @@
+
+# Before you can install Docker Engine, you must first make sure that any conflicting packages are uninstalled.
+# Distro maintainers provide an unofficial distributions of Docker packages in APT. You must uninstall these packages before you can install the official version of Docker Engine.
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
@@ -20,9 +25,5 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 echo "currently the docker deamon runs as root, while a docker group was created. consider adding the current user to that group - but this will grant root permissions"
 
-function install {
-  name="${1}"
-  code --install-extension ${name} --force
-}
 
-install ms-azuretools.vscode-docker
+code --install-extension ms-azuretools.vscode-docker --force
