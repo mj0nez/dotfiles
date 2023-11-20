@@ -129,5 +129,23 @@ export NVM_DIR="$HOME/.nvm"
 alias repos="cd ~/repositories"
 alias dotfiles="cd ~/repositories/dotfiles"
 alias work="cd ~/repositories/work"
+alias oss="cd ~/repositories/oss"
 
 source ~/.env
+
+# Java & maven
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+
+export PATH="$JAVA_HOME/bin:$PATH"
+
+M2_HOME='/opt/apache-maven-3.9.5'
+PATH="$M2_HOME/bin:$PATH"
+export PATH
+
+
+# Nomad development
+alias consul-dev="consul agent -dev"
+
+alias nomad-dev="sudo nomad agent -dev \
+  -bind 0.0.0.0 \
+  -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev

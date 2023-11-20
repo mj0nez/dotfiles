@@ -50,3 +50,6 @@
 
     # Delete a branch
     del = branch -D
+
+    # fetch remote tags
+    ft = fetch --tags --force                                                                                                                                                
