@@ -150,3 +150,9 @@ alias consul-dev="consul agent -dev"
 alias nomad-dev="sudo nomad agent -dev \
   -bind 0.0.0.0 \
   -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev
+
+
+# >>>> Vagrant command completion (start)
+fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
+compinit
+# <<<<  Vagrant command completion (end)

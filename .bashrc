@@ -140,3 +140,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 eval "$(register-python-argcomplete pipx)"
+
+# >>>> Vagrant command completion (start)
+. /opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/bash/completion.sh
+# <<<<  Vagrant command completion (end)
