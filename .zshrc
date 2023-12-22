@@ -2,7 +2,10 @@ export PATH="$PATH:/home/$USER/.local/bin"
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+
+if [ $(command -v pyenv) ]; then
+  eval "$(pyenv init -)"
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -158,3 +161,7 @@ alias nomad-dev="sudo nomad agent -dev \
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
 compinit
 # <<<<  Vagrant command completion (end)
+
+if [ $(command -v direnv) ] ; then
+  eval "$(direnv hook zsh)"
+fi
