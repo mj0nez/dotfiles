@@ -130,6 +130,8 @@ alias repos="cd ~/repositories"
 alias dotfiles="cd ~/repositories/dotfiles"
 alias work="cd ~/repositories/work"
 alias oss="cd ~/repositories/oss"
+alias g=git
+alias c=clear
 
 source ~/.env
 
