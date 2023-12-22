@@ -12,6 +12,9 @@
 [includeIf "gitdir:~/repositories/work/"]
     path = ~/repositories/work/.gitconfig
 
+[core]
+    excludesfile = ~/repositories/.gitignore
+
 [alias]
     # Adapted from https://blog.jez.io/cli-code-review/
     # List files which have changed since BASE
