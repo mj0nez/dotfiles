@@ -17,8 +17,8 @@ pyenv update
 pyenv doctor  # verify installation and tools are sufficient
 
 # isntall and set default python to isolate system python
-pyenv install 3.11.5
-pyenv global 3.11.5
+pyenv install 3.11
+pyenv global 3.11
 
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
