@@ -116,7 +116,9 @@ gitBranch() {
 export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "
 
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ $(command -v brew) ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 
 if type brew &>/dev/null
@@ -135,12 +137,9 @@ fi
 
 export PATH="$PATH:/home/$USER/.local/bin"
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 eval "$(register-python-argcomplete pipx)"
 
 # >>>> Vagrant command completion (start)
 . /opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/bash/completion.sh
 # <<<<  Vagrant command completion (end)
+. "$HOME/.cargo/env"

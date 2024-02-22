@@ -1,5 +1,9 @@
 export PATH="$PATH:/home/$USER/.local/bin"
 
+if [ $(command -v direnv) ] ; then
+  eval "$(direnv hook zsh)"
+fi
+
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
@@ -162,6 +166,7 @@ fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
 compinit
 # <<<<  Vagrant command completion (end)
 
-if [ $(command -v direnv) ] ; then
-  eval "$(direnv hook zsh)"
-fi
+
+alias denv="direnv reload"
+
+alias dr="docker run -it --rm"
