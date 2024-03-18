@@ -158,6 +158,7 @@ alias consul-dev="consul agent -dev"
 
 alias nomad-dev="sudo nomad agent -dev \
   -bind 0.0.0.0 \
+  -config=/home/marcel/repositories/dotfiles/configs/nomad/extra.hcl \
   -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev
 
 
