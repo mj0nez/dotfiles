@@ -143,3 +143,6 @@ eval "$(register-python-argcomplete pipx)"
 . /opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/bash/completion.sh
 # <<<<  Vagrant command completion (end)
 . "$HOME/.cargo/env"
+
+
+export PATH=$PATH:/usr/local/go/bin
