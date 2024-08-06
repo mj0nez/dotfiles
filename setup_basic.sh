@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Update Ubuntu and get standard repository programs
+sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update && sudo apt full-upgrade -y
 
 function install {
