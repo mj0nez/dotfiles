@@ -1,12 +1,11 @@
 # My dotfiles
 
-
 ## Settings
 
 1. Language & Region
-    * Change region in language settings - apply english USA system-wide to set en_US.utf8
-1.  Add src-repositories to apt sources
-    * navigate to Settings > About > Software Updates > Ubuntu Software > activate "Source code"
+   - Change region in language settings - apply english USA system-wide to set en_US.utf8
+1. Add src-repositories to apt sources
+   - navigate to Settings > About > Software Updates > Ubuntu Software > activate "Source code"
 
 To make sure the changes apply, logout and re-login.
 
@@ -30,8 +29,8 @@ Password:
 
 Run either one of the two setup scripts
 
-* [setup_basic.sh](/setup_basic.sh) - with git, curl, make, zsh
-* [setup_full.sh](/setup_full.sh) - the above basics and also pyenv, pipx, VS-Code, DBeaver, Postman
+- [setup_basic.sh](/setup_basic.sh) - with git, curl, make, zsh
+- [setup_full.sh](/setup_full.sh) - the above basics and also pyenv, pipx, VS-Code, DBeaver, Postman
 
 with
 
@@ -48,7 +47,7 @@ sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_full
 
 ```
 
-Lastly, set the loaded terminal profile as default by opening a terminal  > Preferences > "zsh-terminal-profile"
+Lastly, set the loaded terminal profile as default by opening a terminal > Preferences > "zsh-terminal-profile"
 
 ## Updating the terminal profile
 
@@ -77,4 +76,15 @@ Change the following setting in VS-Code
 ```json
     "terminal.integrated.fontFamily": "Agave Nerd Font"
 ```
+
 And fix the font in your terminal via Preferences > <Current Profile> > Font > Agave Nerd Font
+
+### Docker-Compose version problems
+
+```
+sudo rm /usr/bin/docker-compose
+❯ sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
+❯ which docker-compose
+/usr/bin/docker-compose
+❯ docker-compose
+```
