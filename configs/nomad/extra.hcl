@@ -1,8 +1,11 @@
 plugin "docker" {
   config {
+    allow_privileged = true
+
     volumes {
       enabled = true
     }
+    
     gc {
       image       = false
     //   image_delay = "3m"
