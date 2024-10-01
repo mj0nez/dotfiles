@@ -142,15 +142,15 @@ alias c=clear
 
 source ~/.env
 
-# Java & maven
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+# # Java & maven
+# export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 
-export PATH="$JAVA_HOME/bin:$PATH"
+# export PATH="$JAVA_HOME/bin:$PATH"
 
-export MAVEN_HOME="/opt/apache-maven-3.9.5"
-export M2_HOME="/opt/apache-maven-3.9.5"
-export PATH="$M2_HOME/bin:$PATH"
-export PATH
+# export MAVEN_HOME="/opt/apache-maven-3.9.5"
+# export M2_HOME="/opt/apache-maven-3.9.5"
+# export PATH="$M2_HOME/bin:$PATH"
+# export PATH
 
 
 # Nomad development
