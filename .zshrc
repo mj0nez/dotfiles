@@ -161,12 +161,12 @@ alias nomad-dev="sudo nomad agent -dev \
   -config=/home/marcel/repositories/dotfiles/configs/nomad/extra.hcl \
   -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev
 
-
-# >>>> Vagrant command completion (start)
-fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
-compinit
-# <<<<  Vagrant command completion (end)
-
+if [ $(command -v vagrant) ]; then
+  # >>>> Vagrant command completion (start)
+  fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
+  compinit
+  # <<<<  Vagrant command completion (end)
+fi
 
 alias denv="direnv reload"
 
