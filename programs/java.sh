@@ -6,13 +6,11 @@ sudo apt-get install -y \
     openjdk-17-jre \
     openjdk-17-jdk \
     openjdk-17-doc \
-    openjdk-17-jre-headless \
     openjdk-17-source
 
 sudo apt-get install -y \
     openjdk-21-jre \
     openjdk-21-jdk \
-    openjdk-21-jre-headless \
     openjdk-21-doc \
     openjdk-21-source
 
