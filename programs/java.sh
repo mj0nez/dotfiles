@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update 
+sudo apt update
 
 sudo apt-get install -y \
     openjdk-17-jre \
@@ -14,9 +14,9 @@ sudo apt-get install -y \
     openjdk-21-doc \
     openjdk-21-source
 
-# allows setting default java with 
+# allows setting default java with
 # sudo update-alternatives --config java
-sudo apt install update-alternatives 
+sudo apt install update-alternatives
 
 
 # https://www.digitalocean.com/community/tutorials/install-maven-linux-ubuntu

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 [init]
-  defaultBranch = main
+    defaultBranch = main
 
 [user]
     name = Marcel Johannesmann
@@ -55,4 +55,4 @@
     del = branch -D
 
     # fetch remote tags
-    ft = fetch --tags --force                                                                                                                                                
+    ft = fetch --tags --force
