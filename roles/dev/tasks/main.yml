@@ -1,3 +1,31 @@
 ---
+- name: Add git repository for latest stable release.
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:git-core/ppa
+    state: present
+
+- name: Install base dependencies.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: present
+    pkg:
+      - git
+      - git-gui
+      - tree
+      - curl
+      - bat
+      - tar
+      - gzip
+      - build-essential
+      - gcc
+      - make
+      - jq
+      - nmap
+      - htop
+      - tmux
+      - net-tools
+
 - name: Install direnv.
   ansible.builtin.include_tasks: direnv.yml
