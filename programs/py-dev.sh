@@ -33,8 +33,8 @@ pyenv doctor  # verify installation and tools are sufficient
 pyenv install 3.12
 pyenv global 3.12
 
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
+python -m pip install --user pipx
+python -m pipx ensurepath
 
 packages=(tox pre-commit pip-tools "black[jupyter]" codespell ansible)
 
