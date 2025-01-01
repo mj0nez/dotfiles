@@ -1,0 +1,8 @@
+---
+- name: Setup Hashicorp's apt repository.
+  when: hashitools_setup_nomad or hashitools_setup_consul or hashitools_setup_vagrant
+  ansible.builtin.include_tasks: repo.yml
+
+- name: Setup Nomad and it's dependencies.
+  when: hashitools_setup_nomad
+  ansible.builtin.include_tasks: nomad.yml

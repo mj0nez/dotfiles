@@ -5,4 +5,7 @@
   roles:
     # - role: dev
     # - role: java
-    - role: docker
+    # - role: docker
+    - role: hashitools
+      vars:
+        hashitools_setup_nomad: true
