@@ -3,12 +3,15 @@
   become: true
   ansible.builtin.apt:
     update_cache: true
+    cache_valid_time: 300
     state: present
     pkg:
       - wget
       - gpg
       - coreutils
       - nomad
+      - consul-cni
+      - dmidecode
 
 - name: Check for CNI plugins.
   ansible.builtin.stat:

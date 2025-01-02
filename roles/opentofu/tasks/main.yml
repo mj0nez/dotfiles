@@ -6,26 +6,26 @@
     state: directory
     mode: "0755"
 
-- name: Check for Hashicorps's GPG key.
+- name: Check for OpenTofu's GPG key.
   ansible.builtin.stat:
-    path: /etc/apt/keyrings/hashicorp.asc
+    path: /etc/apt/keyrings/opentofu-repo.asc
   register: key_stat
 
-- name: Check for Hashicorps's apt repository.
+- name: Check for OpenTofu's apt repository.
   ansible.builtin.stat:
-    path: /etc/apt/sources.list.d/hashicorp.sources
+    path: /etc/apt/sources.list.d/opentofu.sources
   register: src_stat
 
-- name: Add Hashicorps's GPG key if not present.
+- name: Add OpenTofu's GPG key and source repo if not present.
   block:
     # saving the gpg key in asc format avoids the dearmor step
     # see https://stackoverflow.com/a/72548342
-    - name: Add Hashicorp's apt key.
+    - name: Add OpenTofu's apt key.
       when: not key_stat.stat.exists
       become: true
       ansible.builtin.get_url:
-        url: https://apt.releases.hashicorp.com/gpg
-        dest: /etc/apt/keyrings/hashicorp.asc
+        url: https://packages.opentofu.org/opentofu/tofu/gpgkey
+        dest: /etc/apt/keyrings/opentofu-repo.asc
         mode: "0644"
         force: false
 
@@ -33,11 +33,19 @@
       when: not src_stat.stat.exists
       become: true
       ansible.builtin.deb822_repository:
-        name: hashicorp
+        name: opentofu
         types: [deb]
-        uris: "https://apt.releases.hashicorp.com"
-        suites: "{{ ansible_distribution_release | lower }}"
+        uris: "https://packages.opentofu.org/opentofu/tofu/any/"
+        suites: "any"
         components: [main]
-        signed_by: /etc/apt/keyrings/hashicorp.asc
+        signed_by: /etc/apt/keyrings/opentofu-repo.asc
         state: present
         enabled: true
+
+- name: Install Opentofu.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: present
+    pkg:
+      - tofu
