@@ -1,3 +1,6 @@
 ---
 - name: Install UV.
   ansible.builtin.include_tasks: uv.yml
+
+- name: Install Pyenv.
+  ansible.builtin.include_tasks: pyenv.yml
