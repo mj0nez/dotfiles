@@ -1,0 +1,3 @@
+---
+- name: Install UV.
+  ansible.builtin.include_tasks: uv.yml

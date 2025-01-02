@@ -1,0 +1,35 @@
+---
+- name: Check if UV is available.
+  ansible.builtin.command:
+    cmd: uv --version
+  ignore_errors: true
+  register: uv_version_result
+  changed_when: false
+
+- name: Install UV.
+  when: uv_version_result is failed
+  block:
+    - name: Download binaries.
+      ansible.builtin.uri:
+        # url:
+        url: https://api.github.com/repos/astral-sh/uv/releases/latest
+        method: GET
+        return_content: true
+      register: release_resp
+    - name: Set latest version of UV.
+      ansible.builtin.set_fact:
+        uv_latest_tag: "{{ release_resp.json.tag_name }}"
+
+    - name: Download release.
+      ansible.builtin.get_url:
+        url: "https://github.com/astral-sh/uv/releases/download/{{ uv_latest_tag }}/uv-x86_64-unknown-linux-gnu.tar.gz"
+        dest: /tmp/uv-x86_64-unknown-linux-gnu.tar.gz
+        checksum: "sha256:https://github.com/astral-sh/uv/releases/download/{{ uv_latest_tag }}/uv-x86_64-unknown-linux-gnu.tar.gz.sha256"
+        force: true
+        mode: "0644"
+
+    - name: Unarchive release.
+      ansible.builtin.unarchive:
+        src: /tmp/uv-x86_64-unknown-linux-gnu.tar.gz
+        dest: ~/.local/bin
+        extra_opts: [--strip-components=1]
