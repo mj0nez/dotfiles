@@ -1,5 +1,5 @@
 ---
-- name: Install Java
+- name: Install Development tools on devboxes.
   hosts: devboxs
   roles:
     # - role: dev
@@ -11,4 +11,5 @@
     #     hashitools_setup_nomad: true
     # - role: opentofu
     # - role: go
-    - role: python
+    # - role: python
+    - role: rust
