@@ -1,0 +1,15 @@
+---
+- name: Install zsh and p10k theme.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 600
+    state: present
+    pkg:
+      - zsh
+      - fonts-powerline
+
+- name: Ensure default shell is zsh for "{{ ansible_user }}"
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh

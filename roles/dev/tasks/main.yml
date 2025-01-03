@@ -27,5 +27,8 @@
       - tmux
       - net-tools
 
+- name: Install zsh.
+  ansible.builtin.include_tasks: zsh.yml
+
 - name: Install direnv.
   ansible.builtin.include_tasks: direnv.yml
