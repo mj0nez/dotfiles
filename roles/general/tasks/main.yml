@@ -26,6 +26,8 @@
       - htop
       - tmux
       - net-tools
+      - inxi
+      - dmidecode
 
 - name: Install zsh.
   ansible.builtin.include_tasks: zsh.yml
