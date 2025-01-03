@@ -2,7 +2,7 @@
 - name: Install Development tools on devboxes.
   hosts: devboxs
   roles:
-    - role: dev
+    - role: general
     # - role: java
     # - role: docker
     # - role: hashitools
