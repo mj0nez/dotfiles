@@ -24,13 +24,16 @@
       - jq
       - nmap
       - htop
-      - tmux
+      - vim
       - net-tools
       - inxi
       - dmidecode
 
 - name: Install zsh.
   ansible.builtin.include_tasks: zsh.yml
+
+- name: Install tmux.
+  ansible.builtin.include_tasks: tmux.yml
 
 - name: Install direnv.
   ansible.builtin.include_tasks: direnv.yml

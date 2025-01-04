@@ -35,7 +35,7 @@ linkDotfile .gitconfig
 linkDotfile .git-completion.bash
 linkDotfile .zshrc
 linkDotfile .p10k.zsh
-#linkDotfile .tmux.conf
+linkDotfile .tmux.conf
 #linkDotfile .goomwwmrc
 #linkDotfile .inputrc
 #linkDotfile .xinitrc

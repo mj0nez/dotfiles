@@ -1,0 +1,33 @@
+---
+- name: Install tmux.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 300
+    state: present
+    pkg:
+      - tmux
+
+- name: Ensure plugin dir.
+  ansible.builtin.file:
+    path: ~/.config/tmux/plugins/
+    state: directory
+    mode: "750"
+
+- name: Clone current theme version.
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "~/.config/tmux/plugins/tpm"
+    depth: 1
+    single_branch: true
+    update: false
+    version: master
+
+- name: Clone current theme version.
+  ansible.builtin.git:
+    repo: https://github.com/catppuccin/tmux.git
+    dest: "~/.config/tmux/plugins/catppuccin/tmux"
+    single_branch: true
+    depth: 1
+    version: v2.1.2
+    update: false
