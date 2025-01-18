@@ -1,0 +1,27 @@
+---
+- name: Remove previous installation.
+  become: true
+  ansible.builtin.file:
+    path: "/opt/{{ item }}"
+    state: absent
+  loop:
+    - nvim
+    - nvim-linux64
+
+- name: Download neovim binary.
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/v0.10.3/nvim-linux64.tar.gz"
+    checksum: "sha256:https://github.com/neovim/neovim/releases/download/v0.10.3/nvim-linux64.tar.gz.sha256sum"
+    dest: /tmp/nvim-linux64.tar.gz
+    mode: "644"
+
+- name: Unpack neovim binary.
+  become: true
+  ansible.builtin.unarchive:
+    src: /tmp/nvim-linux64.tar.gz
+    dest: /opt/
+
+- name: Install python support.
+  become: true
+  ansible.builtin.pip:
+    name: python3-neovim

@@ -196,3 +196,8 @@ if [ $(command -v vagrant) ]; then
   compinit
   # <<<<  Vagrant command completion (end)
 fi
+
+
+# Neovim
+
+export PATH="$PATH:/opt/nvim-linux64/bin"

@@ -1,0 +1,22 @@
+- name: Make Download directory
+  ansible.builtin.file:
+    path: /tmp/btop/
+    state: directory
+    mode: "0755"
+
+- name: Download binary and signature.
+  ansible.builtin.unarchive:
+    src: "https://github.com/aristocratos/btop/releases/download/{{ btop_version }}/btop-x86_64-linux-musl.tbz"
+    dest: "/tmp/btop/"
+    mode: "0755"
+    remote_src: true
+  register: download
+
+- name: Install btop.
+  become: true
+  when: download.changed or btop_install_force
+  ansible.builtin.command:
+    argv:
+      - make
+      - install
+    chdir: /tmp/btop/btop
