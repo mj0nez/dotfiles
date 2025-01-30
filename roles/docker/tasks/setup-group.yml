@@ -1,0 +1,23 @@
+---
+- name: Ensure dependencies are present.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+    pkg:
+      - passwd
+    state: present
+
+- name: Create docker group.
+  become: true
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Add user to docker group.
+  become: true
+  ansible.builtin.user:
+    name: marcel
+    groups:
+      - docker
+    append: true

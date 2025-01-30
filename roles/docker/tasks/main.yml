@@ -1,5 +1,6 @@
 ---
 - name: Remove unofficial distributions from system.
+  become: true
   ansible.builtin.apt:
     state: absent
     pkg:
@@ -11,7 +12,9 @@
       - runc
 
 - name: Update packages and install setup dependencies.
+  become: true
   ansible.builtin.apt:
+    cache_valid_time: 3600
     update_cache: true
     pkg:
       - ca-certificates
@@ -20,9 +23,10 @@
       - gnupg
 
 - name: Ensure Docker's repository is present.
-  ansible.builtin.include_tasks: repo.yml
+  ansible.builtin.include_tasks: setup-repo.yml
 
 - name: Install latest versions.
+  become: true
   ansible.builtin.apt:
     update_cache: true
     state: present
@@ -32,3 +36,9 @@
       - containerd.io
       - docker-buildx-plugin
       - docker-compose-plugin
+
+# TODO:  use conditional if username is provided.
+- name: Setup user and group.
+  ansible.builtin.include_role:
+    name: docker
+    tasks_from: setup-group.yml

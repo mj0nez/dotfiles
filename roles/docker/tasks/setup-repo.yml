@@ -1,0 +1,46 @@
+---
+- name: Ensure directory exists for /etc/apt/keyrings
+  become: true
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "755"
+
+- name: Check for Docker's GPG key.
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/docker.asc
+  register: key_stat
+
+# saving the gpg key in asc format avoids the dearmor step
+# see https://stackoverflow.com/a/72548342
+- name: Add Docker apt key.
+  when: not key_stat.stat.exists
+  become: true
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    dest: /etc/apt/keyrings/docker.asc
+    mode: "644"
+    force: false
+    checksum: "sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+
+- name: Install deb822 debendency of remote, which runs this module.
+  become: true
+  ansible.builtin.apt: # using apt avoids dependency on pip
+    update_cache: true
+    cache_valid_time: 3600
+    pkg:
+      - python3-debian
+    state: present
+
+- name: Add repo using key from URL
+  become: true
+  ansible.builtin.deb822_repository:
+    name: docker
+    state: present
+    types: [deb]
+    architectures: "{{ docker_architecture_map[ansible_architecture] }}"
+    uris: "https://download.docker.com/linux/{{ ansible_distribution | lower }}"
+    suites: "{{ ansible_distribution_release | lower }}"
+    components: [stable]
+    signed_by: /etc/apt/keyrings/docker.asc
+    enabled: true
