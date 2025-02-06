@@ -166,7 +166,9 @@ if [ $(command -v pyenv) ]; then
   eval "$(pyenv init -)"
 fi
 
-eval "$(register-python-argcomplete pipx)"
+if [ $(command -v pipx) ]; then
+  eval "$(register-python-argcomplete pipx)"
+fi
 
 if [ $(command -v direnv) ] ; then
   eval "$(direnv hook zsh)"

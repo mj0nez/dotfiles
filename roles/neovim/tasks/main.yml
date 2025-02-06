@@ -24,4 +24,4 @@
 - name: Install python support.
   become: true
   ansible.builtin.pip:
-    name: python3-neovim
+    name: pynvim

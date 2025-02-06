@@ -10,6 +10,7 @@
       - fonts-powerline
 
 - name: Ensure default shell is zsh for "{{ ansible_user }}"
+  become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh
