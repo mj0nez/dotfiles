@@ -5,14 +5,15 @@
     # - role: general
     # - role: java
     # - role: docker
-    # - role: hashitools
-    #   vars:
-    #     hashitools_setup_consul: true
-    #     hashitools_setup_nomad: true
+    - role: hashitools
+      vars:
+        hashitools_setup_vault: true
+        hashitools_setup_consul: true
+        hashitools_setup_nomad: true
     # - role: opentofu
     # - role: go
     # - role: python
     # - role: rust
     # - role: neovim
     # - role: borg
-    - role: btop
+    # - role: btop

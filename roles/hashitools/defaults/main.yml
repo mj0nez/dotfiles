@@ -1,5 +1,5 @@
-hashitools_setup_nomad: false
+hashitools_setup_vault: false
 hashitools_setup_consul: false
-hashitools_setup_vagrant: false
+hashitools_setup_nomad: false
 
-hashitools_cni_plugin_version: "v1.5.1"
+hashitools_cni_plugin_version: "v1.6.2"
