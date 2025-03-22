@@ -1,0 +1,7 @@
+---
+- name: Update Development tools on devboxes.
+  hosts: devboxs
+  vars:
+    role:
+  roles:
+    - role: "{{ role }}" # set via CLI as -e role=go

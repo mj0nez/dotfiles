@@ -15,6 +15,7 @@
       - git-gui
       - tree
       - curl
+      - dnsutils
       - bat
       - tar
       - gzip

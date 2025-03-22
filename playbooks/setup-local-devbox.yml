@@ -11,7 +11,7 @@
         hashitools_setup_consul: true
         hashitools_setup_nomad: true
     # - role: opentofu
-    # - role: go
+    - role: go
     # - role: python
     # - role: rust
     # - role: neovim
