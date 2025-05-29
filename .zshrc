@@ -77,7 +77,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions ssh-agent nvm tmux)
+plugins=(
+  git 
+  zsh-autosuggestions 
+  ssh-agent 
+  nvm 
+  tmux
+  )
 
 # lazyloading for nvm see https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm
 zstyle ':omz:plugins:nvm' lazy yes
@@ -140,6 +146,8 @@ alias nomad-dev="sudo nomad agent -dev \
   -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev
 
 
+alias cat=bat
+
 ### ----------------------------------------------------- ###
 
 
@@ -152,7 +160,8 @@ if [ $(command -v cargo) ]; then
 fi
 
 # Go
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:~/go/bin
+
 
 
 # Python
@@ -162,13 +171,13 @@ export PATH="$PATH:/home/$USER/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
-if [ $(command -v pyenv) ]; then
-  eval "$(pyenv init -)"
-fi
+# if [ $(command -v pyenv) ]; then
+#   eval "$(pyenv init -)"
+# fi
 
-if [ $(command -v pipx) ]; then
-  eval "$(register-python-argcomplete pipx)"
-fi
+# if [ $(command -v pipx) ]; then
+#   eval "$(register-python-argcomplete pipx)"
+# fi
 
 if [ $(command -v direnv) ] ; then
   eval "$(direnv hook zsh)"
