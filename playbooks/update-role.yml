@@ -3,5 +3,6 @@
   hosts: devboxs
   vars:
     role:
+    ansible_connection: local
   roles:
     - role: "{{ role }}" # set via CLI as -e role=go

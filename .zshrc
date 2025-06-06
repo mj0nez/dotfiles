@@ -78,10 +78,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git 
-  zsh-autosuggestions 
-  ssh-agent 
-  nvm 
+  git
+  zsh-autosuggestions
+  ssh-agent
+  nvm
   tmux
   )
 
@@ -160,8 +160,7 @@ if [ $(command -v cargo) ]; then
 fi
 
 # Go
-export PATH=$PATH:/usr/local/go/bin:~/go/bin
-
+export PATH=$PATH:/usr/local/go/bin:/home/$USER/go/bin
 
 
 # Python
