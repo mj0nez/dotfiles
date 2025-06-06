@@ -1,0 +1,42 @@
+---
+- name: Install nomad and it's dependencies.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: present
+    pkg:
+      - wget
+      - gpg
+      - coreutils
+      - nomad
+      - consul-cni
+      - dmidecode
+
+- name: Check for CNI plugins.
+  ansible.builtin.stat:
+    path: /opt/cni/bin/bridge
+  register: cni_bridge_plugin_stat
+
+- name: Install CNI plugins.
+  when: not cni_bridge_plugin_stat
+  block:
+    - name: Ensure directory exists
+      become: true
+      ansible.builtin.file:
+        path: /opt/cni/bin
+        state: directory
+        mode: "0755"
+
+    - name: Download CNI plugin release.
+      ansible.builtin.get_url:
+        url: "https://github.com/containernetworking/plugins/releases/download/{{ hashitools_cni_plugin_version }}/cni-plugins-linux-amd64-{{ hashitools_cni_plugin_version }}.tgz" # yamllint disable-line rule:line-length
+        dest: "tmp/cni-plugins-linux-amd64-{{ hashitools_cni_plugin_version }}.tgz"
+        checksum: "sha256:https://github.com/containernetworking/plugins/releases/download/{{ hashitools_cni_plugin_version }}/cni-plugins-linux-amd64-{{ hashitools_cni_plugin_version }}.tgz.sha256" # yamllint disable-line rule:line-length
+        mode: "0755"
+
+    - name: Unarchive plugins.
+      become: true
+      ansible.builtin.unarchive:
+        remote_src: true
+        src: "tmp/cni-plugins-linux-amd64-{{ hashitools_cni_plugin_version }}.tgz"
+        dest: /opt/cni/bin

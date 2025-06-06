@@ -1,0 +1,5 @@
+[wsl2]
+memory=32212254720
+
+# to allow LAN access through the wsl
+networkingMode=mirrored

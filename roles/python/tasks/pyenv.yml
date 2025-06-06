@@ -1,0 +1,63 @@
+---
+# see https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+- name: Install build dependencies.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 600
+    state: present
+    pkg:
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - curl
+      - git
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+      - llvm
+
+- name: Clone repositories.
+  block:
+    - name: Clone pyenv-master.
+      ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv.git
+        dest: ~/.pyenv/
+        single_branch: true
+        depth: 1
+        version: master
+        update: false
+
+    - name: Clone pyenv-doctor.
+      ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv-doctor.git
+        dest: ~/.pyenv/plugins/pyenv-doctor/
+        single_branch: true
+        depth: 1
+        version: master
+        update: false
+
+    - name: Clone pyenv-update.
+      ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv-update.git
+        dest: ~/.pyenv/plugins/pyenv-update/
+        single_branch: true
+        depth: 1
+        version: master
+        update: false
+
+    - name: Clone pyenv-virtualenv.
+      ansible.builtin.git:
+        repo: https://github.com/pyenv/pyenv-virtualenv.git
+        dest: ~/.pyenv/plugins/pyenv-virtualenv/
+        single_branch: true
+        depth: 1
+        version: master
+        update: false

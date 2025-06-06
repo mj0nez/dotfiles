@@ -5,7 +5,7 @@ plugin "docker" {
     volumes {
       enabled = true
     }
-    
+
     gc {
       image       = false
     //   image_delay = "3m"

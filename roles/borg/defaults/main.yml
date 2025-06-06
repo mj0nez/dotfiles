@@ -1,0 +1,3 @@
+borg_version: "1.4.0"
+
+borg_gcc_version: "glibc231"

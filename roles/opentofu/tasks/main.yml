@@ -1,0 +1,51 @@
+---
+- name: Ensure directory exists for /etc/apt/keyrings
+  become: true
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Check for OpenTofu's GPG key.
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/opentofu-repo.asc
+  register: key_stat
+
+- name: Check for OpenTofu's apt repository.
+  ansible.builtin.stat:
+    path: /etc/apt/sources.list.d/opentofu.sources
+  register: src_stat
+
+- name: Add OpenTofu's GPG key and source repo if not present.
+  block:
+    # saving the gpg key in asc format avoids the dearmor step
+    # see https://stackoverflow.com/a/72548342
+    - name: Add OpenTofu's apt key.
+      when: not key_stat.stat.exists
+      become: true
+      ansible.builtin.get_url:
+        url: https://packages.opentofu.org/opentofu/tofu/gpgkey
+        dest: /etc/apt/keyrings/opentofu-repo.asc
+        mode: "0644"
+        force: false
+
+    - name: Add repo using key from URL
+      when: not src_stat.stat.exists
+      become: true
+      ansible.builtin.deb822_repository:
+        name: opentofu
+        types: [deb]
+        uris: "https://packages.opentofu.org/opentofu/tofu/any/"
+        suites: "any"
+        components: [main]
+        signed_by: /etc/apt/keyrings/opentofu-repo.asc
+        state: present
+        enabled: true
+
+- name: Install Opentofu.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: present
+    pkg:
+      - tofu

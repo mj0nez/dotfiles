@@ -1,0 +1,60 @@
+---
+- name: Remove unofficial distributions from system.
+  become: true
+  ansible.builtin.apt:
+    state: absent
+    pkg:
+      - docker.io
+      - docker-doc
+      - docker-compose
+      - podman-docker
+      - containerd
+      - runc
+
+- name: Update packages and install setup dependencies.
+  become: true
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    update_cache: true
+    pkg:
+      - ca-certificates
+      - curl
+      - apt-transport-https
+      - gnupg
+
+- name: Ensure Docker's repository is present.
+  ansible.builtin.include_tasks: setup-repo.yml
+
+- name: Create docker daemon config directory.
+  ansible.builtin.file:
+    path: /etc/docker/
+    state: directory
+    owner: root
+    group: root
+    mode: "0750"
+
+- name: Configure docker daemon.
+  ansible.builtin.template:
+    src: etc/docker/daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: "0640"
+
+- name: Install latest versions.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: present
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+
+# TODO:  use conditional if username is provided.
+- name: Setup user and group.
+  ansible.builtin.include_role:
+    name: docker
+    tasks_from: setup-group.yml

@@ -1,16 +1,3 @@
-export PATH="$PATH:/home/$USER/.local/bin"
-
-if [ $(command -v direnv) ] ; then
-  eval "$(direnv hook zsh)"
-fi
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-
-if [ $(command -v pyenv) ]; then
-  eval "$(pyenv init -)"
-fi
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -90,7 +77,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions ssh-agent nvm tmux)
+plugins=(
+  git
+  zsh-autosuggestions
+  ssh-agent
+  nvm
+  tmux
+  )
 
 # lazyloading for nvm see https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm
 zstyle ':omz:plugins:nvm' lazy yes
@@ -128,10 +121,11 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# additional environment variables
+source ~/.env
 
+
+### ---------------------- Aliases ---------------------- ###
 
 alias repos="cd ~/repositories"
 alias dotfiles="cd ~/repositories/dotfiles"
@@ -140,20 +134,10 @@ alias oss="cd ~/repositories/oss"
 alias g=git
 alias c=clear
 
-source ~/.env
+alias denv="direnv reload"
 
-# Java & maven
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+alias dr="docker run -it --rm"
 
-export PATH="$JAVA_HOME/bin:$PATH"
-
-export MAVEN_HOME="/opt/apache-maven-3.9.5"
-export M2_HOME="/opt/apache-maven-3.9.5"
-export PATH="$M2_HOME/bin:$PATH"
-export PATH
-
-
-# Nomad development
 alias consul-dev="consul agent -dev"
 
 alias nomad-dev="sudo nomad agent -dev \
@@ -162,12 +146,68 @@ alias nomad-dev="sudo nomad agent -dev \
   -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev
 
 
-# >>>> Vagrant command completion (start)
-fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
-compinit
-# <<<<  Vagrant command completion (end)
+alias cat=bat
+
+### ----------------------------------------------------- ###
 
 
-alias denv="direnv reload"
 
-alias dr="docker run -it --rm"
+### -------------------- Programming -------------------- ###
+
+# Rust
+if [ $(command -v cargo) ]; then
+  . "$HOME/.cargo/env"
+fi
+
+# Go
+export PATH=$PATH:/usr/local/go/bin:/home/$USER/go/bin
+
+
+# Python
+export PATH="$PATH:/home/$USER/.local/bin"
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+# if [ $(command -v pyenv) ]; then
+#   eval "$(pyenv init -)"
+# fi
+
+# if [ $(command -v pipx) ]; then
+#   eval "$(register-python-argcomplete pipx)"
+# fi
+
+if [ $(command -v direnv) ] ; then
+  eval "$(direnv hook zsh)"
+fi
+
+# JavaScript
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Java
+# export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+
+# export PATH="$JAVA_HOME/bin:$PATH"
+
+# export MAVEN_HOME="/opt/apache-maven-3.9.5"
+# export M2_HOME="/opt/apache-maven-3.9.5"
+# export PATH="$M2_HOME/bin:$PATH"
+# export PATH
+
+### ----------------------------------------------------- ###
+
+#  Vagrant
+if [ $(command -v vagrant) ]; then
+  # >>>> Vagrant command completion (start)
+  fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
+  compinit
+  # <<<<  Vagrant command completion (end)
+fi
+
+
+# Neovim
+
+export PATH="$PATH:/opt/nvim-linux64/bin"

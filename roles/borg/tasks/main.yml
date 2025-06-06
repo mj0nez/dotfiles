@@ -1,0 +1,41 @@
+- name: Add an apt key by id from a keyserver.
+  ansible.builtin.command:
+    argv:
+      - gpg
+      - --recv-keys
+      - 6D5B EF9A DD20 7580 5747 B70F 9F88 FB52 FAF7 B393
+  register: output
+  changed_when: output.rc == 0 and 'imported' in output.stderr
+
+- name: Make Download directory
+  ansible.builtin.file:
+    path: /tmp/borg/
+    state: directory
+    mode: "0755"
+
+- name: Download binary and signature.
+  ansible.builtin.get_url:
+    url: "https://github.com/borgbackup/borg/releases/download/{{ borg_version }}/{{ item }}"
+    dest: "/tmp/borg/{{ item }}"
+    mode: "0755"
+  loop:
+    - "borg-linux-{{ borg_gcc_version }}"
+    - "borg-linux-{{ borg_gcc_version }}.asc"
+
+- name: Verify binary signature.
+  ansible.builtin.command:
+    argv:
+      - gpg
+      - --verify
+      - "/tmp/borg/borg-linux-{{ borg_gcc_version }}.asc"
+  changed_when: false
+
+- name: Copy binary on path.
+  become: true
+  ansible.builtin.copy:
+    remote_src: true
+    src: "/tmp/borg/borg-linux-{{ borg_gcc_version }}"
+    dest: /usr/local/bin/borg
+    owner: root
+    group: root
+    mode: "0755"

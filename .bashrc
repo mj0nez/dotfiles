@@ -134,15 +134,3 @@ then
     done
   fi
 fi
-
-export PATH="$PATH:/home/$USER/.local/bin"
-
-eval "$(register-python-argcomplete pipx)"
-
-# >>>> Vagrant command completion (start)
-. /opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/bash/completion.sh
-# <<<<  Vagrant command completion (end)
-. "$HOME/.cargo/env"
-
-
-export PATH=$PATH:/usr/local/go/bin

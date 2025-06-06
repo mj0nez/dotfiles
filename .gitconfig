@@ -1,11 +1,11 @@
 #!/bin/bash
 
 [init]
-  defaultBranch = main
+    defaultBranch = main
 
 [user]
-    name = Marcel Johannesmann
-    email = mj0nez@fn.de
+	name = Marcel Johannesmann
+	email = mj0nez@fn.de
 
 # see https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig/43654115#43654115
 # and https://git-scm.com/docs/git-config#_conditional_includes
@@ -14,6 +14,12 @@
 
 [core]
     excludesfile = ~/repositories/.gitignore
+
+    editor = code --wait
+
+[pull]
+    # merge instead of rebase
+    rebase = false
 
 [alias]
     # Adapted from https://blog.jez.io/cli-code-review/
@@ -55,4 +61,4 @@
     del = branch -D
 
     # fetch remote tags
-    ft = fetch --tags --force                                                                                                                                                
+    ft = fetch --tags --force

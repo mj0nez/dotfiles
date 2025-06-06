@@ -1,0 +1,48 @@
+---
+- name: Install zsh and p10k theme.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 600
+    state: present
+    pkg:
+      - zsh
+      - fonts-powerline
+
+- name: Ensure default shell is zsh for "{{ ansible_user }}"
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+
+- name: Check if oh-my-zsh is available.
+  ansible.builtin.stat:
+    path: ~/.oh-my-zsh/
+  register: omz_dir
+
+- name: Install oh-my-zsh with plugins and theme.
+  when: not omz_dir.stat.exists
+  block:
+    - name: Download installation script.
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: /tmp/omz-install.sh
+        mode: "644"
+
+    - name: Run installation script in non-interactive mode.
+      ansible.builtin.script:
+        cmd: /tmp/omz-install.sh --unattended
+
+    - name: Clone auto-suggestions plugin repo.
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        single_branch: true
+        update: false
+
+    - name: Clone powerlevel10k theme repo.
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+        single_branch: true
+        update: false

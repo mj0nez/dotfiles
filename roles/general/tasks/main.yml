@@ -1,0 +1,41 @@
+---
+- name: Add git repository for latest stable release.
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:git-core/ppa
+    state: present
+
+- name: Install base dependencies.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: present
+    pkg:
+      - git
+      - git-gui
+      - tree
+      - curl
+      - dnsutils
+      - bat
+      - tar
+      - gzip
+      - build-essential
+      - gcc
+      - make
+      - jq
+      - nmap
+      - htop
+      - vim
+      - net-tools
+      - inxi
+      - dmidecode
+      - python3-debian # allows usage of deb822_repository module
+
+- name: Install zsh.
+  ansible.builtin.include_tasks: zsh.yml
+
+- name: Install tmux.
+  ansible.builtin.include_tasks: tmux.yml
+
+- name: Install direnv.
+  ansible.builtin.include_tasks: direnv.yml

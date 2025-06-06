@@ -1,0 +1,6 @@
+---
+- name: Install JDKs
+  ansible.builtin.include_tasks: jdks.yml
+
+- name: Install Maven
+  ansible.builtin.include_tasks: maven.yml

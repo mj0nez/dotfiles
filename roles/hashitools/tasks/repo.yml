@@ -1,0 +1,43 @@
+---
+- name: Ensure directory exists for /etc/apt/keyrings
+  become: true
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Check for Hashicorps's GPG key.
+  ansible.builtin.stat:
+    path: /etc/apt/keyrings/hashicorp.asc
+  register: key_stat
+
+- name: Check for Hashicorps's apt repository.
+  ansible.builtin.stat:
+    path: /etc/apt/sources.list.d/hashicorp.sources
+  register: src_stat
+
+- name: Add Hashicorps's GPG key if not present.
+  block:
+    # saving the gpg key in asc format avoids the dearmor step
+    # see https://stackoverflow.com/a/72548342
+    - name: Add Hashicorp's apt key.
+      when: not key_stat.stat.exists
+      become: true
+      ansible.builtin.get_url:
+        url: https://apt.releases.hashicorp.com/gpg
+        dest: /etc/apt/keyrings/hashicorp.asc
+        mode: "0644"
+        force: false
+
+    - name: Add repo using key from URL
+      when: not src_stat.stat.exists
+      become: true
+      ansible.builtin.deb822_repository:
+        name: hashicorp
+        types: [deb]
+        uris: "https://apt.releases.hashicorp.com"
+        suites: "{{ ansible_distribution_release | lower }}"
+        components: [main]
+        signed_by: /etc/apt/keyrings/hashicorp.asc
+        state: present
+        enabled: true

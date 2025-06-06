@@ -1,0 +1,2 @@
+collections:
+  - name: community.general # is included in ansible but not in ansible-core

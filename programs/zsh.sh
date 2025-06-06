@@ -17,7 +17,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 # download and install nerd-fonts
 
-version=v3.0.2
+version=v3.3.0
 font=Agave
 
 mkdir -p patched-fonts/$font/
