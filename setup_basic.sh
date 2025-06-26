@@ -40,6 +40,18 @@ bash ./programs/zsh.sh
 # link dotfiles and overwrite autoconfig
 ./symlink.sh
 
+# setup git maintenance timers
+# while the dotfiles will be registered here, new repos can be registers with 'git setup'
+touch ~/repositories/.gitconfig
+# pre-register dotfiles repo in non-tracked config file, so that it's not written to the
+# global config with maintenance start
+git maintenance register --config-file ~/repositories/.gitconfig
+# start the timers (because creating them manually is kind of a pain...)
+git maintenance start
+# show tracked repo and timers
+git config --show-origin --get-all maintenance.repo
+systemctl --user list-timers
+
 # Get all upgrades
 # Update Ubuntu and get standard repository programs
 sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y
