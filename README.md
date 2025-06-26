@@ -79,9 +79,11 @@ Change the following setting in VS-Code
 
 And fix the font in your terminal via Preferences > <Current Profile> > Font > Agave Nerd Font
 
+## FAQ
+
 ### Docker-Compose version problems
 
-```
+```bash
 sudo rm /usr/bin/docker-compose
 ❯ sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
 ❯ which docker-compose
