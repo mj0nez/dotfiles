@@ -90,3 +90,11 @@ sudo rm /usr/bin/docker-compose
 /usr/bin/docker-compose
 ❯ docker-compose
 ```
+
+### Trace Git errors
+
+```bash
+# activate general traces
+# for more variables see https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
+export GIT_TRACE=1
+```

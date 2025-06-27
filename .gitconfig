@@ -67,7 +67,7 @@
     ft = fetch --tags --force
 
     # start maintenance for this repository and add it to the local config file
-    setup = --file ~/repositories/.gitconfig maintenance register
+    setup = maintenance register --config-file /home/marcel/repositories/.gitconfig
     # get the list of active timers
     timers = !systemctl --user list-timers
     # show maintained repos
