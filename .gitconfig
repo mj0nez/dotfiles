@@ -52,8 +52,10 @@
     save = !git add -A && git cm -m 'chore: commit save point'
 
     undo = reset HEAD~1 --mixed
-    res = !git reset --hard
-    done = !git push origin HEAD
+    res = reset --hard
+    done = push origin HEAD
+
+    fp = push --force-with-lease
 
     co = checkout
 
@@ -67,11 +69,12 @@
     ft = fetch --tags --force
 
     # start maintenance for this repository and add it to the local config file
-    setup = maintenance register --config-file /home/marcel/repositories/.gitconfig
+    # use a subshell to get the home
+    setup = !git maintenance register --config-file ~/repositories/.gitconfig
     # get the list of active timers
     timers = !systemctl --user list-timers
     # show maintained repos
-    ls-maintenance = !git config --show-origin --get-all maintenance.repo
+    ls-maintenance = config --show-origin --get-all maintenance.repo
 
 [fetch]
     # speed up git log
