@@ -24,6 +24,10 @@
     # merge instead of rebase
     rebase = false
 
+[push]
+    default = current
+    autoSetupRemote = true
+
 [alias]
     # Adapted from https://blog.jez.io/cli-code-review/
     # List files which have changed since BASE
