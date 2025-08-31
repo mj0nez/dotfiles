@@ -29,10 +29,10 @@ WantedBy=multi-user.target
 ```ini
 #/etc/systemd/system/update-system-flatpaks.timer
 [Unit]
-Description=Update system Flatpaks daily
+Description=Update system Flatpaks weekly.
 
 [Timer]
-OnCalendar=daily
+OnCalendar=weekly
 Persistent=true
 
 [Install]
@@ -41,4 +41,5 @@ WantedBy=timers.target
 
 ```bash
 sudo systemctl --system enable --now update-system-flatpaks.timer
+sudo systemctl list-timers
 ```
