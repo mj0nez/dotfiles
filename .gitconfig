@@ -23,6 +23,13 @@
 [pull]
     # merge instead of rebase
     rebase = false
+    autostash = true
+
+[merge]
+    autostash = true
+
+[rebase]
+    autostash = true
 
 [push]
     default = current
