@@ -60,7 +60,7 @@
     # qucik save point without manual hooks
     s = !git add -A && git commit -m 'chore: commit save point'
     # quick save point with hooks
-    save = !git add -A && git cm -m 'chore: commit save point'
+    save = !git add -A && git commit -m 'chore: commit save point'
 
     undo = reset HEAD~1 --mixed
     res = reset --hard

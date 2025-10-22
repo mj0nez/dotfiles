@@ -146,7 +146,7 @@ alias nomad-dev="sudo nomad agent -dev \
   -network-interface='{{ GetDefaultInterfaces | attr \"name\" }}'" # -region dev
 
 
-alias cat=bat
+alias cat=batcat
 
 ### ----------------------------------------------------- ###
 
