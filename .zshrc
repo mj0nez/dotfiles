@@ -188,13 +188,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Java
-# export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 
 # export PATH="$JAVA_HOME/bin:$PATH"
 
 # export MAVEN_HOME="/opt/apache-maven-3.9.5"
-# export M2_HOME="/opt/apache-maven-3.9.5"
-# export PATH="$M2_HOME/bin:$PATH"
+export M2_HOME="/usr/local/bin/mvn"
+export PATH="$M2_HOME/bin:$PATH"
 # export PATH
 
 ### ----------------------------------------------------- ###
