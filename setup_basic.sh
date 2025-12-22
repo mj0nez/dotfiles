@@ -52,6 +52,9 @@ git maintenance start
 git config --show-origin --get-all maintenance.repo
 systemctl --user list-timers
 
+# a dummy file for global secrets and settings
+touch $HOME/.env
+
 # Get all upgrades
 # Update Ubuntu and get standard repository programs
 sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y

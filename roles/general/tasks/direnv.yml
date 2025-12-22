@@ -1,14 +1,14 @@
 ---
 - name: Register direnv installation status.
   ansible.builtin.command: which direnv
-  changed_when: false
-  failed_when: false
+  ignore_errors: true
   register: direnv_installed
+  changed_when: false
 
 - name: Download binary and place it on path.
-  when: not direnv_installed
+  when: direnv_installed is failed
   become: true
   ansible.builtin.get_url:
-    url: https://github.com/direnv/direnv/releases/download/v2.35.0/direnv.linux-amd64
+    url: https://github.com/direnv/direnv/releases/download/v2.37.1/direnv.linux-amd64
     dest: "/usr/bin/direnv"
     mode: a+x

@@ -26,6 +26,7 @@
   ansible.builtin.include_tasks: setup-repo.yml
 
 - name: Create docker daemon config directory.
+  become: true
   ansible.builtin.file:
     path: /etc/docker/
     state: directory
@@ -34,6 +35,7 @@
     mode: "0750"
 
 - name: Configure docker daemon.
+  become: true
   ansible.builtin.template:
     src: etc/docker/daemon.json.j2
     dest: /etc/docker/daemon.json

@@ -1,10 +1,4 @@
 ---
-- name: Add git repository for latest stable release.
-  become: true
-  ansible.builtin.apt_repository:
-    repo: ppa:git-core/ppa
-    state: present
-
 - name: Install base dependencies.
   become: true
   ansible.builtin.apt:
