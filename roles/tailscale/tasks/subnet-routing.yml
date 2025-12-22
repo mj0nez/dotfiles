@@ -1,0 +1,10 @@
+---
+- name: Check if tailscale.conf exists
+  become: true
+  ansible.builtin.copy:
+    src: etc/sysctl.d/99-tailscale.conf
+    dest: /etc/sysctl.d/99-tailscale.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Reload network conf.

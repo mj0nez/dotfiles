@@ -1,0 +1,11 @@
+---
+- name: Reload network conf.
+  become: true
+  ansible.builtin.command: sysctl -p /etc/sysctl.d/99-tailscale.conf
+  register: output
+  changed_when: output.rc == 0
+
+- name: Restart systemd
+  become: true
+  ansible.builtin.service:
+    daemon_reload: true

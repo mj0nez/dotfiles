@@ -1,0 +1,27 @@
+---
+- name: Add Tailscale stable APT repository
+  become: true
+  ansible.builtin.deb822_repository:
+    name: tailscale
+    types: [deb]
+    uris: "https://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}"
+    signed_by: "https://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_release | lower }}.asc"
+    suites: ["{{ ansible_distribution_release | lower }}"]
+    components: [main]
+    state: present
+    enabled: true
+
+- name: Install tailscale.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    pkg:
+      - tailscale
+    state: present
+
+- name: Configure waiter.
+  ansible.builtin.include_tasks: wait-for-bind.yml
+
+- name: Enable subnet routing.
+  when: tailscale_enable_subnet_routing
+  ansible.builtin.include_tasks: subnet-routing.yml
