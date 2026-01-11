@@ -1,7 +1,7 @@
 #!/bin/bash
 
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 [user]
 	name = Marcel Johannesmann
@@ -19,6 +19,9 @@
     excludesfile = ~/repositories/.gitignore
 
     editor = code --wait
+
+[pager]
+    stash = false
 
 [pull]
     # merge instead of rebase
@@ -94,3 +97,9 @@
 [rerere]
     # reuse recorded resolution
 	enabled = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
