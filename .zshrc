@@ -182,10 +182,17 @@ if [ $(command -v direnv) ] ; then
   eval "$(direnv hook zsh)"
 fi
 
-# JavaScript
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# # JavaScript
+# nvm is lazy loaded via zsh plugin
+# pnpm
+export PNPM_HOME="$NVM_DIR/versions/node/v24.11.0/bin"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
 
 # Java
 # export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
@@ -211,3 +218,4 @@ fi
 # Neovim
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
