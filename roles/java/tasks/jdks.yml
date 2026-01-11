@@ -14,21 +14,19 @@
 - name: Install OpenJDK-21
   become: true
   ansible.builtin.apt:
-    update_cache: true
-    cache_valid_time: 3600
     state: present
     pkg:
       - openjdk-21-jre
       - openjdk-21-jdk
       - openjdk-21-doc
       - openjdk-21-source
-# - name: Install OpenJDK-23
-#   when: (ansible_distribution_major_version | int) >= 23
-#   become: true
-#   ansible.builtin.apt:
-#     state: present
-#     pkg:
-#       - openjdk-23-jre
-#       - openjdk-23-jdk
-#       - openjdk-23-doc
-#       - openjdk-23-source
+
+- name: Install OpenJDK-25
+  become: true
+  ansible.builtin.apt:
+    state: present
+    pkg:
+      - openjdk-25-jre
+      - openjdk-25-jdk
+      - openjdk-25-doc
+      - openjdk-25-source

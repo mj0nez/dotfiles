@@ -1,0 +1,20 @@
+---
+# this does not exist before setting up tailscale, so we create it
+- name: Create the service's config directory
+  become: true
+  ansible.builtin.file:
+    path: /etc/systemd/system/tailscaled.service.d
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+
+- name: Configure post start waiter.
+  become: true
+  ansible.builtin.copy:
+    src: etc/systemd/system/tailscaled.service.d/override.conf
+    dest: /etc/systemd/system/tailscaled.service.d/override.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart systemd
