@@ -4,5 +4,7 @@
   vars:
     role:
     ansible_connection: local
-  roles:
-    - role: "{{ role }}" # set via CLI as -e role=go
+  tasks:
+    - ansible.builtin.include_role:
+        name: "{{ role }}" # set via CLI as -e role=go
+        tasks_from: "{{ tasks | default('main') }}.yml"
