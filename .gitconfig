@@ -5,7 +5,7 @@
 
 [user]
 	name = Marcel Johannesmann
-	email = mj0nez@fn.de
+	email = mj0nez@proton.me
 
 # see https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig/43654115#43654115
 # and https://git-scm.com/docs/git-config#_conditional_includes
@@ -25,7 +25,7 @@
 
 [pull]
     # merge instead of rebase
-    rebase = false
+    rebase = true
     autostash = true
 
 [merge]
@@ -70,6 +70,7 @@
     done = push origin HEAD
 
     fp = push --force-with-lease
+    fwl = push --force-with-lease
 
     co = checkout
 
