@@ -2,7 +2,7 @@
 - name: Update Development tools on devboxes.
   hosts: devboxs
   vars:
-    role:
+    role: go
     ansible_connection: local
   tasks:
     - ansible.builtin.include_role:
