@@ -98,6 +98,8 @@
 [rerere]
     # reuse recorded resolution
 	enabled = true
+
+# TODO: check if the settings below are necessary
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
