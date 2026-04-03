@@ -55,6 +55,8 @@
     # stage everything
     stg = add -A .
 
+    stow = stash -u
+
     # quick and dirty commit
     c = "!git add -A && git commit -m "
 
