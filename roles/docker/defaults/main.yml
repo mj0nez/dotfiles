@@ -1,3 +1,7 @@
 docker_log_driver: "json-file"
 docker_log_opts_max_size: "100m"
 docker_log_opts_max_file: "3"
+# prohibits conflicts with the WifiOnICE which uses 172.18.0.0/16 like docker
+docker_default_address_pools:
+  - base: "172.19.0.0/16"
+    size: 24
