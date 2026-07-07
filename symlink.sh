@@ -2,11 +2,12 @@
 
 dotfilesDir=$(pwd)
 
-function linkDotfile {
-  dest="${HOME}/${1}"
+function linkTo {
+  src="${1}"
+  dest="${2}"
   dateStr=$(date +%Y-%m-%d-%H%M)
 
-  if [ -h ~/${1} ]; then
+  if [ -h "${dest}" ]; then
     # Existing symlink
     echo "Removing existing symlink: ${dest}"
     rm ${dest}
@@ -23,24 +24,32 @@ function linkDotfile {
   fi
 
   echo "Creating new symlink: ${dest}"
-  ln -s ${dotfilesDir}/${1} ${dest}
+  ln -s ${src} ${dest}
+}
+
+function linkDotFileToHome {
+  src="${dotfilesDir}/${1}"
+  dest="${HOME}/${1}"
+
+  linkTo ${src} ${dest}
 }
 
 #linkDotfile .vim
 #linkDotfile .vimrc
 #linkDotfile .ackrc
-linkDotfile .bashrc
-linkDotfile .bash_profile
-linkDotfile .gitconfig
-linkDotfile .git-completion.bash
-linkDotfile .zshrc
-linkDotfile .p10k.zsh
-linkDotfile .tmux.conf
+linkDotFileToHome .bashrc
+linkDotFileToHome .bash_profile
+linkDotFileToHome .gitconfig
+linkDotFileToHome .git-completion.bash
+linkDotFileToHome .zshrc
+linkDotFileToHome .p10k.zsh
+linkDotFileToHome .tmux.conf
 #linkDotfile .goomwwmrc
 #linkDotfile .inputrc
 #linkDotfile .xinitrc
 #linkDotfile .curlrc
 #linkDotfile .gf
+
 
 #mkdir -p $dotfilesDir/.vim/bundle
 #cd $dotfilesDir/.vim/bundle

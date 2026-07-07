@@ -6,10 +6,13 @@ IGNORE_BRANCHES=("master" "develop" "main" "dev")
 Color_Off='\033[0m'       # Text Reset
 Green='\033[0;32m'        # Green
 
-current_branch=$(git branch --show-current)
-
-echo "Current branch: $current_branch"
+echo "Current branches:"
 echo
+
+git branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+echo
+
+current_branch=$(git branch --show-current)
 
 function should_ignore(){
     local branch="$1"
@@ -52,5 +55,15 @@ while IFS="|" read -r branch message date author; do
 done < <(git for-each-ref \
     --format='%(refname:short)|%(contents:subject)|%(committerdate:relative)|%(authorname) --sort=-committerdate)' refs/heads/ )
 
+echo
+echo "Running garbage collection:"
+echo
 
 git gc
+
+echo
+echo "Branches after cleanup:"
+echo
+
+git branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+echo
