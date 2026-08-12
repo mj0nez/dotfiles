@@ -47,6 +47,9 @@ sudo wget -qO- https://raw.githubusercontent.com/mj0nez/dotfiles/main/setup_full
 
 ```
 
+> [!NOTE]
+> On Ubuntu 26.04 and later `-e ansible_become_exe=/usr/bin/sudo.ws` should be used because there might still be problems with the current implementation in ansible (see [ansible#86964](https://github.com/ansible/ansible/pull/86964)). In this case reproduce the steps from `setup_ansible.sh` manually with the additional flag.
+
 Lastly, set the loaded terminal profile as default by opening a terminal > Preferences > "zsh-terminal-profile"
 
 ## Updating the terminal profile

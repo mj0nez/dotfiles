@@ -1,7 +1,8 @@
 ---
+# FIXME: this is really a pain, I would like to get a permalink or at least a direct one to the latest version
 - name: Download and unarchive Maven binary.
   become: true
   ansible.builtin.unarchive:
-    src: https://dlcdn.apache.org/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz
+    src: https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz
     dest: /opt/
     remote_src: true

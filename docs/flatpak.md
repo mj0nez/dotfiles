@@ -1,5 +1,14 @@
 # Flatpak
 
+## General Setup
+
+- [Doc](https://flathub.org/en/setup/Ubuntu)
+
+> [!WARN]
+> After installing a flatpak you should logout / restart the machine to changes and applications to be registered.
+
+## Nextcloud Desktop
+
 The nextcloud-clients are either pretty old or do not function when installing from source.
 Therefore the official but not verified flatpak app is used:
 

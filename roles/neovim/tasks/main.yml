@@ -21,7 +21,8 @@
     src: /tmp/nvim-linux64.tar.gz
     dest: /opt/
 
-- name: Install python support.
-  become: true
-  ansible.builtin.pip:
-    name: pynvim
+# FIXME: this needs to be addressed, currently not working because Python & pip is managed by uv
+# - name: Install python support.
+#   become: true
+#   ansible.builtin.pip:
+#     name: pynvim
