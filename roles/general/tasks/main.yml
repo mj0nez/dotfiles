@@ -24,6 +24,7 @@
       - inxi
       - dmidecode
       - python3-debian # allows usage of deb822_repository module
+      - libheif-plugin-libde265 # https://www.omgubuntu.co.uk/2026/05/fix-heic-images-not-loading-ubuntu-26-04
 
 - name: Install zsh.
   ansible.builtin.include_tasks: zsh.yml
