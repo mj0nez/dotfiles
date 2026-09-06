@@ -138,6 +138,15 @@ alias denv="direnv reload"
 
 alias dr="docker run -it --rm"
 
+dsize() {
+  if [[ $# -ne 1 ]]; then
+    echo "usage: dsize <image>" >&2
+    return 1
+  fi
+  docker inspect -f '{{.Size}}' "$1" | numfmt --to=si
+}
+
+
 alias consul-dev="consul agent -dev"
 
 alias nomad-dev="sudo nomad agent -dev \
@@ -195,12 +204,12 @@ esac
 
 
 # Java
-export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/java-25-openjdk-amd64"
 
 # export PATH="$JAVA_HOME/bin:$PATH"
 
-# export MAVEN_HOME="/opt/apache-maven-3.9.5"
-export M2_HOME="/usr/local/bin/mvn"
+export MAVEN_HOME="/opt/apache-maven-3.9.12"
+# export M2_HOME="/usr/local/bin/mvn"
 export PATH="$M2_HOME/bin:$PATH"
 # export PATH
 
@@ -219,3 +228,31 @@ fi
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+checksum () {
+  if [[ -z "$1" ]]
+  then
+    echo "checksum <target file path> <target sum> [bit length, default 256]"
+    return 1
+  fi
+	
+  target_file="$1"
+  target_sum="$2"
+  bit_length="${3:-256}"
+	
+  computed_sum=`openssl "sha$bit_length" "$target_file" | cut -d' ' -f2`
+	
+  if [[ "$computed_sum" == "$target_sum" ]]
+  then
+    echo "checksum match"
+    return 0
+  else
+    echo "checksum mismatch"
+    return 1
+  fi
+}
