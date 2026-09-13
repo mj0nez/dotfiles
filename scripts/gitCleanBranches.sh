@@ -40,7 +40,7 @@ while IFS="|" read -r branch message date author; do
     echo -e "Branch: ${Green}$branch${Color_Off}"
     echo -e "Last commit: ${Green}$date${Color_Off}"
     echo "Author: $author"
-    echo 
+    echo
     echo "$message"
     echo
 

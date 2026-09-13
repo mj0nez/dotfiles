@@ -8,5 +8,6 @@ dependencies = [
     "ansible>=13.1.0",
     "ansible-lint>=25.12.1",
     "jmespath>=1.0.1",
+    "pre-commit>=4.6.2",
     "python-debian>=1.0.1",
 ]

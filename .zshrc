@@ -240,13 +240,13 @@ checksum () {
     echo "checksum <target file path> <target sum> [bit length, default 256]"
     return 1
   fi
-	
+
   target_file="$1"
   target_sum="$2"
   bit_length="${3:-256}"
-	
+
   computed_sum=`openssl "sha$bit_length" "$target_file" | cut -d' ' -f2`
-	
+
   if [[ "$computed_sum" == "$target_sum" ]]
   then
     echo "checksum match"
