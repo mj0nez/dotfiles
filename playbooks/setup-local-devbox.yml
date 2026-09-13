@@ -3,6 +3,7 @@
   hosts: devboxs
   roles:
     - role: general
+    - role: ufw
     - role: java
     - role: docker
     - role: hashitools

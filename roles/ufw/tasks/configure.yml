@@ -1,0 +1,61 @@
+---
+- name: Set Configuration Defaults
+  become: true
+  ansible.builtin.template:
+    src: etc/default/ufw
+    dest: /etc/default/ufw
+    owner: root
+    group: root
+    mode: "0644"
+  notify: "Reload ufw"
+
+- name: Setup logging
+  become: true
+  community.general.ufw:
+    logging: "{{ ufw_logging }}"
+  notify: "Reload ufw"
+
+- name: Configure policy defaults
+  become: true
+  community.general.ufw:
+    default: "{{ item.default }}"
+    direction: "{{ item.direction }}"
+  loop: "{{ ufw_default_rules }}"
+  loop_control:
+    pause: 1
+    label: "Policy: {{ item.default }} {{ item.direction }} "
+  notify: "Reload ufw"
+
+- name: Apply firewall rules
+  become: true
+  community.general.ufw:
+    comment: "{{ item.comment }}"
+    route: "{{ item.route | default(False) }}"
+    rule: "{{ item.rule }}"
+    interface: "{{ item.interface | default('') }}"
+    direction: "{{ item.direction | default('in') }}"
+    from_ip: "{{ item.from_ip | default('any') }}"
+    to_ip: "{{ item.to_ip | default('any') }}"
+    from_port: "{{ item.from_port | default(omit) }}"
+    to_port: "{{ item.to_port | default(omit) }}"
+    protocol: "{{ item.protocol | default('any') }}"
+    log: "{{ item.log | default(False) }}"
+    delete: "{{ item.delete | default(False) }}"
+  loop: "{{ ufw_rules }}"
+  loop_control:
+    pause: 1
+    label: "{{ item.comment }}"
+  notify: "Reload ufw"
+
+- name: Apply firewall profiles from /etc/ufw/applications.d/
+  become: true
+  community.general.ufw:
+    name: "{{ item.name }}"
+    rule: "{{ item.rule }}"
+  loop: "{{ ufw_profiles }}"
+  notify: "Reload ufw"
+
+- name: Enable Firewall
+  become: true
+  community.general.ufw:
+    state: enabled

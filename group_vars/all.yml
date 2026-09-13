@@ -1,2 +1,41 @@
 ---
 remote_user_name: marcel
+
+# TAILSCALE
+tailnet_interface_name: tailscale0
+
+# FIREWALL
+ufw_logging: "low"
+
+ufw_default_rules:
+  - default: deny
+    direction: incoming
+  - default: allow
+    direction: outgoing
+
+# per default we only allow ssh on the default ipv4 interface
+# hosts which are part of the tailnet override this value and add
+# the tailscale port
+ufw_rules:
+  - comment: "ssh"
+    rule: "allow"
+    to_port: "22"
+    protocol: "tcp"
+    interface: "{{ ansible_facts['default_ipv4'].interface }}"
+    direction: in
+
+  - comment: "tailscale"
+    rule: "allow"
+    to_port: "41641"
+    protocol: "udp"
+    direction: in
+
+  - comment: "tailscale traffic"
+    rule: "allow"
+    interface: "{{ tailnet_interface_name }}"
+    direction: in
+
+  - comment: "docker"
+    rule: "allow"
+    from_ip: "172.16.0.0/12"
+    direction: in

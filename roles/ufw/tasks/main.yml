@@ -1,0 +1,12 @@
+---
+- name: Install ufw.
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+    state: present
+    pkg:
+      - ufw
+
+- name: Configure ufw.
+  ansible.builtin.include_tasks: configure.yml

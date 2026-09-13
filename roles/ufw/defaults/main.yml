@@ -1,0 +1,13 @@
+---
+ufw_ipv6: "yes"
+ufw_default_forward_policy: "DROP"
+
+ufw_logging: "low"
+
+ufw_default_rules: []
+
+ufw_rules: []
+
+ufw_profiles: []
+
+ufw_allow_networks: []
