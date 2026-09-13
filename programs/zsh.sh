@@ -16,22 +16,15 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 
 # download and install nerd-fonts
+FONT_NAME=Agave
 
-version=v3.3.0
-font=Agave
-
-mkdir -p patched-fonts/$font/
-
-# get and unpack font archive
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/download/$version/$font.tar.xz
-tar -xf $font.tar.xz -C patched-fonts/$font/
-
-# load and run installation
-wget -qO- https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh | bash
+curl -OL https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh
+chmod +x install.sh
+VERBOSE=2 ./install.sh install DaddyTimeMono
+./install.sh install $FONT_NAME
 
 # clean up
-rm -r -d patched-fonts
-rm $font.tar.xz
+rm -r -d install.sh
 
 # loading the profile does not work - should be done manually...
 #

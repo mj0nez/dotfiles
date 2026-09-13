@@ -4,7 +4,7 @@
 
 - [Doc](https://flathub.org/en/setup/Ubuntu)
 
-> [!WARN]
+> [!WARNING]
 > After installing a flatpak you should logout / restart the machine to changes and applications to be registered.
 
 ## Nextcloud Desktop

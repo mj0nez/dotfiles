@@ -3,6 +3,7 @@ all:
     localhost:
       ansible_host: 127.0.0.1
       ansible_connection: local
+      ansible_become_exe: /usr/bin/sudo.ws
 
 devboxs:
   hosts:
