@@ -33,6 +33,9 @@ cd $_
 git clone https://github.com/mj0nez/dotfiles.git
 cd dotfiles
 
+git remote set-url origin git@github.com:mj0nez/dotfiles.git
+git remote set-url --push origin git@github.com:mj0nez/dotfiles.git
+
 
 # Run zsh install
 bash ./programs/zsh.sh
