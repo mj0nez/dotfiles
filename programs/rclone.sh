@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 dir=$(pwd)
 
 curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
