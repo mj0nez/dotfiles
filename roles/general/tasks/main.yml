@@ -5,26 +5,27 @@
     update_cache: true
     state: present
     pkg:
+      - bat
+      - build-essential
+      - curl
+      - dmidecode
+      - dnsutils
+      - fzf
+      - gcc
       - git
       - git-gui
-      - tree
-      - curl
-      - dnsutils
-      - bat
-      - tar
       - gzip
-      - build-essential
-      - gcc
-      - make
-      - jq
-      - nmap
       - htop
-      - vim
-      - net-tools
       - inxi
-      - dmidecode
-      - python3-debian # allows usage of deb822_repository module
+      - jq
       - libheif-plugin-libde265 # https://www.omgubuntu.co.uk/2026/05/fix-heic-images-not-loading-ubuntu-26-04
+      - make
+      - net-tools
+      - nmap
+      - python3-debian # allows usage of deb822_repository module
+      - tar
+      - tree
+      - vim
 
 - name: Install zsh.
   ansible.builtin.include_tasks: zsh.yml
