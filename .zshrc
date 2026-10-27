@@ -208,8 +208,9 @@ export JAVA_HOME="/usr/lib/jvm/java-25-openjdk-amd64"
 
 # export PATH="$JAVA_HOME/bin:$PATH"
 
-export MAVEN_HOME="/opt/apache-maven-3.9.12"
+export MAVEN_HOME="/opt/apache-maven-3.9.16"
 # export M2_HOME="/usr/local/bin/mvn"
+export M2_HOME="$MAVEN_HOME"
 export PATH="$M2_HOME/bin:$PATH"
 # export PATH
 
