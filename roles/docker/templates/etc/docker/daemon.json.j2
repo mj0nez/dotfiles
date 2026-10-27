@@ -1,5 +1,6 @@
 {
   "default-address-pools": {{ docker_default_address_pools | to_json }},
+  {% if docker_registry_proxy_url != "" %}"registry-mirrors": ["{{ docker_registry_proxy_url }}"],{% endif%}
   "log-driver": "{{ docker_log_driver }}",
   "log-opts": {
     "max-size": "{{ docker_log_opts_max_size }}",
